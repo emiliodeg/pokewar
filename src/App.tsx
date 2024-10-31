@@ -1,11 +1,17 @@
-import './App.css';
+import Footer from './components/Footer'
+import Header from './components/Header'
+import PokemonsList from './features/pokemons/PokemonsList'
 
-function App() {
+function App (): JSX.Element {
   return (
-    <div className="App">
-      
-    </div>
-  );
+    <>
+      <Header />
+      <main className='container'>
+        <PokemonsList />
+      </main>
+      <Footer />
+    </>
+  )
 }
 
-export default App;
+export default App

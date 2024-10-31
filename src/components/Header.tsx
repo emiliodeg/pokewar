@@ -1,4 +1,3 @@
-export default function Header() {
-    return `<header className="App-header">PokeWar App</header>`
+export default function Header (): JSX.Element {
+  return <header>PokeWar App</header>
 }
-
