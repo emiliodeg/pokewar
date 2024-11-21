@@ -1,15 +1,25 @@
+import { Outlet, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 import Header from './components/Header'
-import PokemonsList from './features/pokemons/PokemonsList'
+import React from 'react'
+import useGame, { IPlayerContext } from './hooks/useGame'
+
+export const GameContext = React.createContext<IPlayerContext>(
+  {} as IPlayerContext
+)
 
 function App (): JSX.Element {
+  const gameContext = useGame()
+
   return (
     <>
-      <Header />
-      <main className='container'>
-        <PokemonsList />
-      </main>
-      <Footer />
+      <GameContext.Provider value={gameContext}>
+        <Header />
+        <main className='container'>
+          <Outlet />
+        </main>
+        <Footer />
+      </GameContext.Provider>
     </>
   )
 }

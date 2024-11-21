@@ -1,29 +1,15 @@
-import { PokeAPI } from 'pokeapi-types'
+import { Avatar } from '@mui/material'
 
 export default function PokemonImage ({
-  pokemon,
-  width,
-  height,
-  ...props
+  id,
+  name
 }: {
-  pokemon: PokeAPI.NamedAPIResource
-  width?: number
-  height?: number
-  [key: string]: any
+  id: number
+  name: string
 }) {
-  const [_, id] = pokemon.url.match(/\/(\d+)\/$/) ?? []
-
   if (!id) return null
 
   const src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
 
-  return (
-    <img
-      src={src}
-      alt={pokemon.name}
-      width={width ?? 100}
-      height={height ?? 100}
-      {...props}
-    />
-  )
+  return <Avatar src={src} alt={name} sx={{ width: 56, height: 56 }} />
 }
